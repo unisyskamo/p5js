@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="p5.js"></script>
+    <script src="addons/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8" />
+
+  </head>
+<body>
+  <h2>p5.js Speech Recognition Demo</h2>
+    <p>「start」ボタンを押下しマイクから音声入力してください。終了時「stop」を押してください。</p>
+    <hr>
+    <button id="button_start_or_stop">start</button>
+    <input type="text" size="50" id="text"></input>status: <span id="label">quiet</span><br>
+
+    <hr> Log
+    <br>
+    <textarea id="textarea" cols=50 rows=5></textarea><br>
+
+    <br>
+
+
+    <script src="lib/p5.speech.js"></script>
+    <script src="sketch.js"></script>
+</body>
+
+</html>
