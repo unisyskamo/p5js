@@ -27,12 +27,20 @@ function setup() {
 
   // start/stop のDOMボタンを押したときに音声認識切り替えを行う
   select("#button_start_or_stop").mouseClicked(toggleSpeechRecognition);
+
+  // reset のDOMボタンを押したときにクリアを行う
+  select("#button_reset").mouseClicked(resetForm);
 }
 
 // 認識途中随時呼び出される関数（認識途中の文字列を取得できる）
 function parseResult() {
   document.getElementById("label").innerHTML = "音声取込中...";
   document.getElementById("text").value = myRec.resultString;
+}
+
+function resetForm() {
+  document.getElementById("text").value = "";
+  document.getElementById("textarea").value = "";
 }
 
 function toggleSpeechRecognition() {
@@ -45,6 +53,7 @@ function toggleSpeechRecognition() {
     myRec.rec.lang = "ja"; // 日本語認識
     myRec.start(); // 認識スタート
     this.html("音声入力stop"); //ボタンの表示をstopにする
+    document.getElementById("button_reset").disabled = true;
   }
   // 音声認識を停止させる
   else {
@@ -52,6 +61,7 @@ function toggleSpeechRecognition() {
     myRec.stop();
     // ボタンの表示をstartにする
     this.html("音声入力start");
+    document.getElementById("button_reset").disabled = false;
   }
 }
 
