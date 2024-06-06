@@ -31,7 +31,7 @@ function setup() {
 
 // 認識途中随時呼び出される関数（認識途中の文字列を取得できる）
 function parseResult() {
-  document.getElementById("label").innerHTML = "speaking...";
+  document.getElementById("label").innerHTML = "音声取込中...";
   document.getElementById("text").value = myRec.resultString;
 }
 
@@ -44,14 +44,14 @@ function toggleSpeechRecognition() {
   if (is_recognition_activated == true) {
     myRec.rec.lang = "ja"; // 日本語認識
     myRec.start(); // 認識スタート
-    this.html("stop"); //ボタンの表示をstopにする
+    this.html("音声入力stop"); //ボタンの表示をstopにする
   }
   // 音声認識を停止させる
   else {
     // 音声認識をとめる
     myRec.stop();
     // ボタンの表示をstartにする
-    this.html("start");
+    this.html("音声入力start");
   }
 }
 
@@ -69,7 +69,7 @@ function endSpeech() {
     // 認識文字列になんか入ってれば
     if (myRec.resultString.length > 0) {
       console.log("End");
-      document.getElementById("label").innerHTML = "quiet";
+      document.getElementById("label").innerHTML = "（取込待ち）";
       document.getElementById("textarea").innerHTML +=
         myRec.resultString + "。";
       document.getElementById("text").value = "";

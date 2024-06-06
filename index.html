@@ -5,20 +5,41 @@
     <script src="addons/p5.sound.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="utf-8" />
-
   </head>
 <body>
-  <h2>p5.js Speech Recognition Demo</h2>
-    <p>「start」ボタンを押下しマイクから音声入力してください。終了時「stop」を押してください。</p>
-    <hr>
-    <button id="button_start_or_stop">start</button>
-    <input type="text" size="50" id="text"></input>status: <span id="label">quiet</span><br>
+  <h3>ご利用者様状況登録</h3>
+    <div class="block1">
+      <h4>ユニシス 太郎 様</h4>
+      <hr>
+      <span id="view_time"></span>
 
-    <hr> Log
-    <br>
-    <textarea id="textarea" cols=50 rows=5></textarea><br>
+      <script type="text/javascript">
+      document.getElementById("view_time").innerHTML = getNow();
 
-    <br>
+      function getNow() {
+	var now = new Date();
+	var year = now.getFullYear();
+	var mon = now.getMonth()+1; //１を足すこと
+	var day = now.getDate();
+	var hour = now.getHours();
+	var min = now.getMinutes();
+
+	//出力用
+	var s = year + "年" + mon + "月" + day + "日" + hour + "時" + min + "分 現在"; 
+	return s;
+      }
+      </script>
+
+      <hr> 本日のご様子
+      <br>
+      <textarea id="textarea" cols=50 rows=6></textarea>
+      <button id="button_start_or_stop">音声入力start</button><br>
+
+      <br>
+      <input type="text" size="50" id="text"></input><span style="font-size: 12px;">：音声取込文字列 </span>
+      <span id="label" style="font-size: 12px;">（取込待ち）</span>
+      <br>
+    <div>
 
 
     <script src="lib/p5.speech.js"></script>
